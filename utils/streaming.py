@@ -4,7 +4,7 @@ from context import UserSessionContext
 from runconfig import config
 
 
-async def run_user_input(user_input:str ,ctx:UserSessionContext):
+async def stream_user_input(user_input:str ,ctx:UserSessionContext):
     result= await Runner.run(
         starting_agent=wellness_agent ,
         input=user_input,               
