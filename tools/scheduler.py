@@ -4,7 +4,7 @@ from agents import function_tool
 async def schedule(followup_time:str) ->str:
     """
     A preferred time schedule that suits you the best for weekly health and progress check
-    Accept input like :Monday 7pm friday 11am
+    Accept input like :Monday 7pm friday 11am⏰
     """
     timeSlot = followup_time.lower()
     valid_days={"Monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"}
