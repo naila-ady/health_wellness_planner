@@ -14,7 +14,7 @@ async def goal_analyzer(collect_goals:str) -> str:
         return "Fitness :you have a fitness goal. How many days per week do you want to work out?"
     elif "sleep" in goal:
         return "Sleep: Got it ! Sleep issue,explain your sleeping pattern"
-    elif "mental" in goal or "stress" in goal:
+    elif "mental" in goal or "stress" in goal or "depression "in goal:
         return "Mental Health :your mental heallth is to be considered ,whats ur age? ,"
     else:
         return "Not a health-related goal"
