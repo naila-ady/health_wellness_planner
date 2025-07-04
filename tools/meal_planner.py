@@ -7,7 +7,7 @@ async def meal_planner(meal_plan:str) -> str:
     """
     plan_key = meal_plan.lower().replace( " " ,"_")
     plans = {
-        "asian_vegetarian": [
+        "vegetarian": [
             "Day 1: cabbage Soup + curd",
             "Day 2: Daal chawal + salad",
             "Day 3: Vegetable pulao + raita",
@@ -16,7 +16,7 @@ async def meal_planner(meal_plan:str) -> str:
             "Day 6: Matar paneer + roti",
             "Day 7: Mix veg curry + brown rice"
         ],
-        "asian_nonveg": [
+        "nonveg": [
             "Day 1: Boiled egg + paratha",
             "Day 2: Chicken curry + rice",
             "Day 3: Fish fry + chapati",
@@ -57,4 +57,4 @@ async def meal_planner(meal_plan:str) -> str:
     if plan_key in plans:
         return "\n".join(plans[plan_key])
     else:
-        return "❌ Invalid diet type. Please choose from: asian_vegetarian, asian_nonveg, vegan, gluten_free, high_protein."
+        return "❌ Invalid diet type. Please choose from vegetarian, nonveg, vegan, gluten_free, high_protein."
