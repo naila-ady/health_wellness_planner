@@ -34,7 +34,7 @@ async def meal_planner(meal_plan:str) -> str:
             "Day 6: Veg pulao + mint chutney",
             "Day 7: Masoor daal + steamed rice"
         ],
-        "gluten_free": [
+        "gluten free": [
             "Day 1: Boiled egg + fruit",
             "Day 2: Daal + rice + salad",
             "Day 3: Grilled chicken + spinach",
@@ -43,7 +43,7 @@ async def meal_planner(meal_plan:str) -> str:
             "Day 6: chickenStake + mashed potatoes",
             "Day 7: Moong daal soup + salad"
         ],
-        "high_protein": [
+        "high protein": [
             "Day 1: Egg omelet + sautéed spinach",
             "Day 2: Grilled chicken + stir-fried cabbage",
             "Day 3: Boiled lentils + cucumber salad",
