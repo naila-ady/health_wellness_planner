@@ -3,7 +3,7 @@ from agents import function_tool
 async def meal_planner(meal_plan:str) -> str:
     """
     A very simple and basic  Asian meal plans for difffernt diet types like
-    vegeterians, vegans , Gluten_free and high_protien/low crab diets.
+    vegeterians, vegans , non veg, gluten free , high protein .
     """
     plan_key = meal_plan.lower().replace( " " ,"_")
     plans = {
@@ -57,4 +57,4 @@ async def meal_planner(meal_plan:str) -> str:
     if plan_key in plans:
         return "\n".join(plans[plan_key])
     else:
-        return "❌ Invalid diet type. Please choose from vegetarian, nonveg, vegan, gluten_free, high_protein."
+        return "❌ Invalid diet type. Please choose from vegetarian, nonveg, vegan, gluten free, high protein."

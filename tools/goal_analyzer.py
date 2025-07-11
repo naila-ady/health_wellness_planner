@@ -11,6 +11,7 @@ async def goal_analyzer(
 ) -> str:
     """
     Analyze the user's input and set their goal category (only once).
+    when user is provided with answer just give him schedue to revisit
     """
 
     user_input = user_input.lower().strip()
@@ -29,18 +30,22 @@ async def goal_analyzer(
 
     # Step 2: If goal type not yet set → handle input
     if "type" not in context.goal:
-        if "nutrition" in user_input or "meal" in user_input or "diet" in user_input:
+        if any (word  in user_input for word in[ "nutrition" ,"meal" ,"food" "diet"] ):
             context.goal["type"] = "nutrition"
             return "✅ Goal set: Nutrition."
-        elif "fitness" in user_input or "gym" in user_input or "workout" in user_input:
+        elif any (word in user_input for  word in ["gym", "workout" ,"excercise","fitness" ,"workout"]):
             context.goal["type"] = "fitness"
             return "✅ Goal set: Fitness."
-        elif "injury" in user_input or "treatment" in user_input:
+        elif any(word in user_input for word in ["injury", "pain", "treatment", "accident"]):
             context.goal["type"] = "injury_support"
             return "✅ Goal set: Injury Support."
-        elif "mental" in user_input or "stress" in user_input:
+        elif any(word in user_input for word in ["mental", "stress", "depression", "anxiety"]):
             context.goal["type"] = "mental_support"
             return "✅ Goal set: Mental Health."
+        elif "exit" in user_input:
+            context.goal["type"] = "exit"
+            return "👋 You’ve exited the goal setup. You may type 'exit' to end the session anytime."
+        
         else:
             return (
                 "❌ Sorry, I didn't understand.\n"

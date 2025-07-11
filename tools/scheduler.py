@@ -1,17 +1,21 @@
+
 from agents import function_tool
 
 @function_tool
-async def schedule(followup_time:str) ->str:
+async def schedule(followup_time: str) -> str:
     """
-    A preferred time schedule that suits you the best for weekly health and progress check
-    Accept input like :Monday 7pm friday 11am⏰
+    ⏰ Schedule a preferred time for the user to revisit weekly for health and progress check.
+    Suggest a time with an 7 day interval along with the date . If the user agrees to the day, confirm.
+    Otherwise, ask the user to select their own convenient time.
     """
-    timeSlot = followup_time.lower()
-    valid_days={"Monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"}
-    # check kar rahe hain ke user ke input mein koi valid din hai ya nahi
-    if any(day in timeSlot for day in valid_days.split()):  
-        # agar valid din mila, to confirm message bhej rahe hain (title() se format set krengay)
-        return f"Weekly scheduled checkup time slot preferred for you is {followup_time.title()}"
+    time_slot = followup_time.lower()
+    valid_days = {"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"}
+
+    # Check if user mentioned a valid day
+    if any(day in time_slot for day in valid_days):
+        return f"✅ Your checkup is scheduled every 7 days you have to reviit me on {followup_time.title()}."
     else:
-        # agar koi valid din nahi mila, to user ko error message dikhate hain
-        return "❌ Please provide a valid day like 'Monday 7am' or 'Friday evening'."
+        return (
+            "❌ The provided time is unclear or doesn't include a valid weekday.\n"
+            "Please mention a day like 'Monday morning' or suggest your own convenient time."
+        )

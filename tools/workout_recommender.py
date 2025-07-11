@@ -33,6 +33,7 @@ from agents import function_tool
 async def workout_plan(plan: str) -> str:
     """
     Suggest a fitness workout plan based on the user's fitness level beginner or advance.
+    once u gave the plan call the tracker tool
     """
 
     work_plan = plan.lower()
