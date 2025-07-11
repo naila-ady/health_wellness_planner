@@ -16,15 +16,26 @@ async def on_chat_start():
 
 @cl.on_message
 async def on_message(message: cl.Message):
-    user_id = message.author  # Chainlit user ID (unique per session)
-    user_input = message.content.strip()
+    user_id = message.author  
+    user_input = message.content.strip().lower()
 
     # Check if user context is created
     if user_id not in user_contexts:
-        # First message is assumed to be name
-        user_contexts[user_id] = UserSessionContext(name=user_input, uid=hash(user_id) % 10000)
-        await cl.Message(f"✅ Hello {user_input}! Now enter your goal like 'Nutrition', 'Meal Plan', or 'Schedule'.").send()
+        name = user_input.capitalize()
+        user_contexts[user_id] = UserSessionContext(name=name, uid=hash(user_id) % 10000)
+        await cl.Message(f"✅ Hello {name}! Now enter your goal like 'Nutrition', 'Fitness', 'Injury support','Mental support' or 'Exit'").send()
+        
         return
+    # Handle "exit" to end chat gracefully
+    if user_input.lower() in ["exit", "quit", "bye"]:
+        await cl.Message("👋 Session ended. Take care and stay healthy!").send()
+        user_contexts.pop(user_id, None)
+        
+        await cl.Message("👋 Welcome to the Health & Wellness Planner Agent!").send()
+        await cl.Message("Please enter your name:").send()
+        return
+
+
 
     # Get the user context
     context = user_contexts[user_id]
@@ -40,3 +51,4 @@ async def on_message(message: cl.Message):
     # Add name and UID
     prefix = f"**Dear {context.name} (UID: {context.uid})**,\n\n"
     await cl.Message(prefix + result.final_output).send()
+    

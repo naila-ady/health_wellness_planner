@@ -9,7 +9,7 @@ from runconfig import config
 # Ask for user name + UID on chat start
 @cl.on_chat_start
 async def on_chat_start():
-    await cl.Message(content="👋 Welcome to Wellness Agent!\nPlease enter your **name and UID** (e.g. `Ali, 123`)").send()
+    await cl.Message(content="👋 Welcome to Wellness Agent!\nPlease enter your name and UID (e.g. `Ali, 123`)").send()
 
 @cl.on_message
 async def on_message(message: cl.Message):

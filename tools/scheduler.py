@@ -6,7 +6,7 @@ async def schedule(followup_time: str) -> str:
     """
     ⏰ Schedule a preferred time for the user to revisit weekly for health and progress check.
     Suggest a time with an 7 day interval along with the date . If the user agrees to the day, confirm.
-    Otherwise, ask the user to select their own convenient time.
+    Otherwise, ask the user to select their own convenient time.once selected ask user want any more help or want to exit
     """
     time_slot = followup_time.lower()
     valid_days = {"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"}

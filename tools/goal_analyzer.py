@@ -11,7 +11,8 @@ async def goal_analyzer(
 ) -> str:
     """
     Analyze the user's input and set their goal category (only once).
-    when user is provided with answer just give him schedue to revisit
+    when user is provided with answer just give him schedue to revisit.
+    After schedule is provided ask him to 
     """
 
     user_input = user_input.lower().strip()
@@ -37,20 +38,29 @@ async def goal_analyzer(
             context.goal["type"] = "fitness"
             return "✅ Goal set: Fitness."
         elif any(word in user_input for word in ["injury", "pain", "treatment", "accident"]):
-            context.goal["type"] = "injury_support"
+            context.goal["type"] = "injury support"
             return "✅ Goal set: Injury Support."
         elif any(word in user_input for word in ["mental", "stress", "depression", "anxiety"]):
-            context.goal["type"] = "mental_support"
+            context.goal["type"] = "mental support"
             return "✅ Goal set: Mental Health."
         elif "exit" in user_input:
             context.goal["type"] = "exit"
-            return "👋 You’ve exited the goal setup. You may type 'exit' to end the session anytime."
-        
+            # return "👋 You’ve exited the goal setup. You may type 'exit' to end the session anytime."
+            return("👋 You’ve exited the goal setup.\n"
+    "If you'd like to end the session now, please type `exit`, `quit`, or `bye`.\n"
+    "Otherwise, feel free to ask me anything else!"
+)
         else:
             return (
                 "❌ Sorry, I didn't understand.\n"
                 "Please choose: Nutrition, Fitness, Mental Health, or Injury Support."
             )
 
-    # Step 3: Goal already set → don't ask again
-    return f"🎯 Your goal is already set to: {context.goal['type'].replace('_', ' ').title()}.\n(You can now continue or type 'exit' to quit.)"
+    # # Step 3: Goal already set → don't ask again
+    # return f"🎯 Your goal is already set to: {context.goal['type'].replace('_', ' ').title()}.\n(You can now continue or type 'exit' to quit.)"
+      # Step 3: Goal already set → friendly follow-up instead of repeat
+    return (
+        f"🎯 Your goal is already set to: {context.goal['type'].replace('_', ' ').title()}.\n"
+        "✅ Would you like help with anything else (like a meal plan, schedule, or nutrition)?\n"
+        "Type your next request or say 'exit' to leave."
+    )
