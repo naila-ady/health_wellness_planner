@@ -23,7 +23,7 @@ async def on_message(message: cl.Message):
     if user_id not in user_contexts:
         name = user_input.capitalize()
         user_contexts[user_id] = UserSessionContext(name=name, uid=hash(user_id) % 10000)
-        await cl.Message(f"✅ Hello {name}! Now enter your goal like 'Nutrition', 'Fitness', 'Injury support','Mental support' or 'Exit'").send()
+        await cl.Message(f"✅ Hello {name}! Now enter your goal like 'Nutrition', 'Fitness', 'Meal plan' or 'Exit'").send()
         
         return
     # Handle "exit" to end chat gracefully

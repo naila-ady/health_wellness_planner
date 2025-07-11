@@ -45,7 +45,6 @@ async def goal_analyzer(
             return "✅ Goal set: Mental Health."
         elif "exit" in user_input:
             context.goal["type"] = "exit"
-            # return "👋 You’ve exited the goal setup. You may type 'exit' to end the session anytime."
             return("👋 You’ve exited the goal setup.\n"
     "If you'd like to end the session now, please type `exit`, `quit`, or `bye`.\n"
     "Otherwise, feel free to ask me anything else!"
@@ -56,11 +55,10 @@ async def goal_analyzer(
                 "Please choose: Nutrition, Fitness, Mental Health, or Injury Support."
             )
 
-    # # Step 3: Goal already set → don't ask again
-    # return f"🎯 Your goal is already set to: {context.goal['type'].replace('_', ' ').title()}.\n(You can now continue or type 'exit' to quit.)"
-      # Step 3: Goal already set → friendly follow-up instead of repeat
     return (
         f"🎯 Your goal is already set to: {context.goal['type'].replace('_', ' ').title()}.\n"
         "✅ Would you like help with anything else (like a meal plan, schedule, or nutrition)?\n"
         "Type your next request or say 'exit' to leave."
     )
+   
+    
