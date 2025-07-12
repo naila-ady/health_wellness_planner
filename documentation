@@ -1,0 +1,66 @@
+Health & Wellness Planner Agent - Documentation
+A smart assistant (agent) that helps users improve their health by setting goals and giving support in these areas:
+Nutrition
+Injury Recovery
+Mental Health
+It works in a step-by-step conversation, asking the user questions and using tools to give helpful advice.
+
+🧩 Tools Description
+1. goal_analyzer
+Purpose: Understand the user's health goal.It asks the user to choose from:
+🍽️ Nutrition, 🏥 Injury Support, or 🧠 Mental Support.
+Based on the user's choice, it sets the goal type.
+
+Example:
+User says: "I want to eat healthier."
+→ Tool returns: "Nutrition"
+
+2. nutrition_tool
+Purpose: Gives healthy food tips or a simple meal plan.It takes the user’s dietary preferences or health goal and suggests suitable foods or meals.
+Example:
+Goal: "Nutrition"
+→ Tool replies: "what help you want about ,meal plan,weightloss,workout."
+
+3. meal_planner
+Purpose: Plans meals for a day or week.Ask user which meal plan suits them "e.g vegetarian or high protien.
+Then provide weekly plan that match the user’s health goal and food preferences.
+Example:
+→ Tool gives a daily meal plan with food ideas.
+
+4. schedule
+Purpose: Helps the user set a follow-up schedule.Suggests a next check-in time (like 7 days later).
+If the user is not available, it asks for a new preferred time.Then give a final reschdule time for next visit
+Example:
+→ Suggests: "Your next check-in is Tuesday, 5 PM. Does that work?"
+
+5. injury_support_tool
+Purpose: Supports recovery from physical injuries.Gives tips for resting, simple stretches, or when to see a doctor.
+
+Example:
+→ "For a minor ankle sprain, try RICE: Rest, Ice, Compression, Elevation."
+
+6. mental_health_tool
+Purpose: Offers emotional or mental support.Gives relaxing tips, positive affirmations, or grounding exercises.
+
+Example:
+→ "Try deep breathing or journaling for 10 minutes."
+
+🧑‍💼 Main Agent Logic
+Agent Behavior:
+Greets user.
+
+Calls goal_analyzer to identify the health goal.
+
+Uses the correct tool:
+
+For "Nutrition" → uses nutrition_tool or meal_planner
+
+For "Injury Support" → uses injury_support_tool
+
+For "Mental Support" → uses mental_health_tool
+
+Offers to set a follow-up time using schedule.
+
+Ends with a kind closing message.
+
+Con
