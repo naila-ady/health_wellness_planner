@@ -1,0 +1,7 @@
+| **User selects**      | **context.goal\["type"]** | **Next step/tool to call**     |
+| --------------------- | ------------------------- | ------------------------------ |
+| 🍽️ Nutrition         | `"nutrition"`             | Call `meal_planner` tool       |
+| 💪 Exercise & Fitness | `"fitness"`               | Call `workout_plan` tool       |
+| 🏥 Treatment          | `"treatment"`             | Call `injury_support_agent`    |
+| 🧠 Mental Support     | `"mental_support"`        | Hand off to `escalation_agent` |
+| 🛌 Sleep Issues       | `"sleep"`                 | Hand off to `escalation_agent` |
